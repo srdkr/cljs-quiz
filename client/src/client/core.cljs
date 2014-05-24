@@ -82,7 +82,7 @@
 
 (defn start []
   (ef/at "body" (ef/append (chat-body)))
-  (ef/at "#history" (ef/content (chat-msg "*** QUIZ ***" "Добро пожаловать!" )))
+  (ef/at "#history" (ef/content (chat-msg "*** QUIZ ***" "Добро пожаловать!" "")))
   (init-events))
 
 ;; (set! (.-onload js/window) start)
