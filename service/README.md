@@ -1,10 +1,9 @@
 # service
 
 Simple quiz game written in Clojure/ClojureScript.
-Used quiz database and
 
 ###Server-side
-[HTTP Kit] HTTP client/server for Clojure with WebSocket support.
+[HTTP Kit] - HTTP client/server for Clojure with WebSocket support.
 
 ###Client-side
 [Enfocus] - DOM manipulation and templating library for ClojureScript.
