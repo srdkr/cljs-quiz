@@ -1,0 +1,10 @@
+{:external-resources "../client/resources/"
+ :in-dev? true
+ :db {:name "testdb"
+      :user "testdb"
+      :pass "testdb"}
+ :web-port 8080
+ :chat-timeout 150000
+ :prompt-timeout 5000
+ :system-user "*** QUIZ ***"
+}
