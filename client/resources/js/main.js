@@ -36506,6 +36506,8 @@ enfocus.core.apply_transform["function"] = function() {
 }();
 goog.provide("client.core");
 goog.require("cljs.core");
+goog.require("clojure.string");
+goog.require("clojure.string");
 goog.require("enfocus.core");
 goog.require("enfocus.core");
 enfocus.core.load_remote_dom.call(null, "/html/chat.html", "remote/html/chat.html", "en5461_");
@@ -36514,15 +36516,15 @@ if (cljs.core.deref.call(null, enfocus.core.tpl_cache).call(null, "remote/html/c
 } else {
 }
 client.core.chat_body = function chat_body() {
-  var vec__7605 = function() {
+  var vec__5523 = function() {
     return enfocus.core.get_cached_snippet.call(null, "remote/html/chat.html", "#page-wrap");
   }.call(null);
-  var id_sym7602 = cljs.core.nth.call(null, vec__7605, 0, null);
-  var pnod7603 = cljs.core.nth.call(null, vec__7605, 1, null);
-  var pnod7603__$1 = enfocus.core.create_hidden_dom.call(null, pnod7603);
-  enfocus.core.i_at.call(null, id_sym7602, pnod7603__$1);
-  enfocus.core.reset_ids.call(null, id_sym7602, pnod7603__$1);
-  return enfocus.core.remove_node_return_child.call(null, pnod7603__$1);
+  var id_sym5520 = cljs.core.nth.call(null, vec__5523, 0, null);
+  var pnod5521 = cljs.core.nth.call(null, vec__5523, 1, null);
+  var pnod5521__$1 = enfocus.core.create_hidden_dom.call(null, pnod5521);
+  enfocus.core.i_at.call(null, id_sym5520, pnod5521__$1);
+  enfocus.core.reset_ids.call(null, id_sym5520, pnod5521__$1);
+  return enfocus.core.remove_node_return_child.call(null, pnod5521__$1);
 };
 enfocus.core.load_remote_dom.call(null, "/html/blog.html", "remote/html/blog.html", "en5466_");
 if (cljs.core.deref.call(null, enfocus.core.tpl_cache).call(null, "remote/html/blog.html") == null) {
@@ -36530,15 +36532,15 @@ if (cljs.core.deref.call(null, enfocus.core.tpl_cache).call(null, "remote/html/b
 } else {
 }
 client.core.blog_header = function blog_header() {
-  var vec__7609 = function() {
+  var vec__5527 = function() {
     return enfocus.core.get_cached_snippet.call(null, "remote/html/blog.html", ".blog-header");
   }.call(null);
-  var id_sym7606 = cljs.core.nth.call(null, vec__7609, 0, null);
-  var pnod7607 = cljs.core.nth.call(null, vec__7609, 1, null);
-  var pnod7607__$1 = enfocus.core.create_hidden_dom.call(null, pnod7607);
-  enfocus.core.i_at.call(null, id_sym7606, pnod7607__$1);
-  enfocus.core.reset_ids.call(null, id_sym7606, pnod7607__$1);
-  return enfocus.core.remove_node_return_child.call(null, pnod7607__$1);
+  var id_sym5524 = cljs.core.nth.call(null, vec__5527, 0, null);
+  var pnod5525 = cljs.core.nth.call(null, vec__5527, 1, null);
+  var pnod5525__$1 = enfocus.core.create_hidden_dom.call(null, pnod5525);
+  enfocus.core.i_at.call(null, id_sym5524, pnod5525__$1);
+  enfocus.core.reset_ids.call(null, id_sym5524, pnod5525__$1);
+  return enfocus.core.remove_node_return_child.call(null, pnod5525__$1);
 };
 enfocus.core.load_remote_dom.call(null, "/html/chat.html", "remote/html/chat.html", "en5461_");
 if (cljs.core.deref.call(null, enfocus.core.tpl_cache).call(null, "remote/html/chat.html") == null) {
@@ -36546,16 +36548,16 @@ if (cljs.core.deref.call(null, enfocus.core.tpl_cache).call(null, "remote/html/c
 } else {
 }
 client.core.chat_msg = function chat_msg(user, msg, time) {
-  var vec__7613 = function() {
+  var vec__5531 = function() {
     return enfocus.core.get_cached_snippet.call(null, "remote/html/chat.html", new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, ["#history \x3e *:first-child"], null));
   }.call(null);
-  var id_sym7610 = cljs.core.nth.call(null, vec__7613, 0, null);
-  var pnod7611 = cljs.core.nth.call(null, vec__7613, 1, null);
-  var pnod7611__$1 = enfocus.core.create_hidden_dom.call(null, pnod7611);
-  enfocus.core.i_at.call(null, id_sym7610, pnod7611__$1, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".author"], null), enfocus.core.content.call(null, [cljs.core.str(user), cljs.core.str(":")].join("")), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".msg"], null), enfocus.core.content.call(null, msg), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".time"], null), enfocus.core.content.call(null, 
+  var id_sym5528 = cljs.core.nth.call(null, vec__5531, 0, null);
+  var pnod5529 = cljs.core.nth.call(null, vec__5531, 1, null);
+  var pnod5529__$1 = enfocus.core.create_hidden_dom.call(null, pnod5529);
+  enfocus.core.i_at.call(null, id_sym5528, pnod5529__$1, new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".author"], null), enfocus.core.content.call(null, [cljs.core.str(user), cljs.core.str(":")].join("")), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".msg"], null), enfocus.core.content.call(null, msg), new cljs.core.PersistentVector(null, 1, 5, cljs.core.PersistentVector.EMPTY_NODE, [".time"], null), enfocus.core.content.call(null, 
   time));
-  enfocus.core.reset_ids.call(null, id_sym7610, pnod7611__$1);
-  return enfocus.core.remove_node_return_child.call(null, pnod7611__$1);
+  enfocus.core.reset_ids.call(null, id_sym5528, pnod5529__$1);
+  return enfocus.core.remove_node_return_child.call(null, pnod5529__$1);
 };
 client.core.if_add_zero = function if_add_zero(in$) {
   if (in$ > 9) {
@@ -36576,8 +36578,8 @@ client.core.add_msg = function add_msg(msg) {
 client.core.conn = new WebSocket([cljs.core.str("ws://"), cljs.core.str(location.hostname), cljs.core.str(":"), cljs.core.str(location.port), cljs.core.str("/ws")].join(""));
 client.core.conn.onopen = function(e) {
   return client.core.conn.send(JSON.stringify(function() {
-    var obj7615 = {"command":"getall"};
-    return obj7615;
+    var obj5533 = {"command":"getall"};
+    return obj5533;
   }()));
 };
 client.core.conn.onerror = function() {
@@ -36586,14 +36588,14 @@ client.core.conn.onerror = function() {
 };
 client.core.conn.onmessage = function(e) {
   var msg = JSON.parse(e.data);
-  var G__7616 = msg.type;
-  if (cljs.core._EQ_.call(null, "prompt", G__7616)) {
+  var G__5534 = msg.type;
+  if (cljs.core._EQ_.call(null, "prompt", G__5534)) {
     return client.core.add_msg.call(null, msg);
   } else {
-    if (cljs.core._EQ_.call(null, "question", G__7616)) {
+    if (cljs.core._EQ_.call(null, "question", G__5534)) {
       return client.core.add_msg.call(null, msg);
     } else {
-      if (cljs.core._EQ_.call(null, "message", G__7616)) {
+      if (cljs.core._EQ_.call(null, "message", G__5534)) {
         return client.core.add_msg.call(null, msg);
       } else {
         if (new cljs.core.Keyword(null, "else", "else", 1017020587)) {
@@ -36608,14 +36610,14 @@ client.core.conn.onmessage = function(e) {
 client.core.send_to_server = function send_to_server() {
   var msg = $("#i").val().trim();
   var author = $.trim($("#name").val());
-  if (cljs.core.truth_(msg)) {
+  if (cljs.core.truth_(clojure.string.blank_QMARK_.call(null, msg))) {
+    return null;
+  } else {
     client.core.conn.send(JSON.stringify(function() {
-      var obj7620 = {"msg":msg, "author":author, "type":"message"};
-      return obj7620;
+      var obj5538 = {"msg":msg, "author":author, "type":"message"};
+      return obj5538;
     }()));
     return enfocus.core.at.call(null, "#i", enfocus.core.set_prop.call(null, new cljs.core.Keyword(null, "value", "value", 1125876963), ""));
-  } else {
-    return null;
   }
 };
 client.core.init_events = function init_events() {

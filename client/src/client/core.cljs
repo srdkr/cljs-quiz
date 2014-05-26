@@ -1,5 +1,6 @@
 (ns client.core
-  (:require [enfocus.core :as ef])
+  (:require [enfocus.core :as ef]
+            [clojure.string :as s])
   (:require-macros [enfocus.macros :as em]))
 
 (em/defsnippet chat-body "/html/chat.html" "#page-wrap" [])
@@ -64,12 +65,11 @@
 (defn send-to-server []
   (let [msg  (.trim (.val (js/$ "#i"))) ;; (.trim js/$ (.value i))
         author (.trim js/$ (.val (js/$ "#name")))]
-    (if msg
-      (do
+    (when-not (s/blank? msg)
         (.send conn (.stringify js/JSON (js-obj "msg" msg "author" author "type" "message")))
         (ef/at "#i" (ef/set-prop :value ""))
  ;       (.log js/console "sending: " (.stringify js/JSON (js-obj "msg" msg "author" author "type" "message")))
-        ))))
+        )))
 
 ;;;;;;;;;;;;;;;;; INIT ;;;;;;;;;;;;;;;;;;;;;;;;;
 

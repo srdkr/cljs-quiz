@@ -9,7 +9,7 @@
         carica.core
         clojure.tools.logging
         org.httpkit.server
-        [service quiz])
+        [service quiz util])
   (:gen-class))
 
 (defn- now [] (System/currentTimeMillis))
@@ -40,6 +40,7 @@
                              :type "message"}
                             msg))))
 
+
 ;;;;;;;;;;;;;;; QUIZ MESSAGES ;;;;;;;;;;;;;;;;;
 
 (defn send-prompt [step]
@@ -64,11 +65,11 @@
                      :question (second @current-question)}))
 
 (defn send-welcome-when-stopped [client]
-  (send-private {:msg (str "Добро пожаловать! Для запуска викторины напишите что-нибудь!")}
+  (send-private {:msg (str "Для запуска викторины напишите что-нибудь!")}
                 client))
 
 (defn send-welcome-with-question [client]
-  (send-private {:msg (str "Добро пожаловать! Текущий вопрос: " (second @current-question))
+  (send-private {:msg (str "Текущий вопрос: " (second @current-question))
                  :question (second @current-question)}
                 client))
 
@@ -97,17 +98,17 @@
                       (Thread/sleep interval)
 
                       (doseq [x [0 1 2 3]]
-                        (if (= question-time @last-question-time)
-                          (do (send-prompt x)
-                            (Thread/sleep interval))))
+                        (when (= question-time @last-question-time)
+                           (send-prompt x)
+                           (Thread/sleep interval)))
 
-                      (if (= question-time @last-question-time)
-                        (do
-                          (send-shame)
-                          (if (< (now) (+ @last-message-time
+                      (when (= question-time @last-question-time)
+                        (send-shame)
+                        (if (< (now) (+ @last-message-time
                                         (config :chat-timeout)))
-                            (new-question-thread)
-                            (stop-quiz-by-timeout))))
+                          (new-question-thread)
+                          (stop-quiz-by-timeout)))
+
                       (catch InterruptedException _)))
       (.start))))
 
@@ -120,7 +121,8 @@
     (let [data (read-json msg)]
       (if (= (first @current-question) (:msg data))
         (do
-          (send-right-answer (:author data) (first @current-question))
+          (send-right-answer (escape-html (:author data))
+                             (first @current-question))
           (new-question-thread))
         ))))
 
@@ -130,15 +132,17 @@
   (let [data (read-json msg)]
     (info "message received: " data)
     (when (:msg data)
-      (send-public (merge data {:time (now)})))
+      (send-public (merge data {:time (now)
+                                :msg (escape-html (:msg data))
+                                :author (escape-html (:author data))})))
       (quiz-handler msg)))
 
 (defn chat-handler [req]
   (with-channel req channel
+    (info channel "connected")
     (if (is-quiz-stopped)
       (send-welcome-when-stopped channel)
       (send-welcome-with-question channel))
-    (info channel "connected")
     (swap! clients assoc channel true)
     (on-receive channel #'mesg-received)
     (on-close channel (fn [status]
